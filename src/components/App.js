@@ -10,10 +10,12 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    this.timerID = setInterval(() => this.setState({ time: Date.now() }), 1000);
-    
+    this.timerID = setInterval(() =>
+     this.setState({ time: Date.now() }), 1000);
   }
-
+  componentWillUnmount() {
+    clearInterval(this.timerID);
+  }
   tick() {
     this.setState({
       date: new Date()
